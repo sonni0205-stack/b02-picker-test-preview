@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin"><title>B02 표준 Picker 읽기 검증</title>
+<style>body{font:16px/1.55 system-ui,sans-serif;max-width:38rem;margin:auto;padding:16px;color:#182437}label{display:block;margin:14px 0 5px}input,select,button{box-sizing:border-box;width:100%;padding:12px;font:inherit}button{margin-top:14px;background:#174ea6;color:white;border:0;border-radius:8px}button:disabled{background:#8997aa}#result{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf3fc;padding:14px;border-radius:8px}.note{background:#fff4d6;padding:12px;border-radius:8px}</style></head>
+<body><h1>B02 Drive 읽기 검증</h1>
+<p class="note">표준 Google Picker 시험용입니다. <b>HTTPS의 신뢰하는 본인 소유 주소</b>에서만 실행하세요. Google OAuth 액세스 토큰은 이 탭의 메모리에만 두며 업로드·삭제·이동 요청은 없습니다. ChatGPT Drive 연결 결과는 사용하지 않습니다.</p>
+<label>OAuth 웹 클라이언트 ID<input id="client" autocomplete="off" spellcheck="false"></label>
+<label>제한된 Google Picker API 키<input id="key" type="password" autocomplete="off" spellcheck="false"></label>
+<label>같은 Google Cloud 프로젝트 번호<input id="app" inputmode="numeric" autocomplete="off"></label>
+<label>B02 root 폴더 ID<input id="root" type="password" autocomplete="off"></label>
+<label>B02 READY 폴더 ID<input id="ready" type="password" autocomplete="off"></label>
+<label>B02 발행기록 폴더 ID<input id="ledger" type="password" autocomplete="off"></label>
+<label>이번에 선택할 폴더<select id="target"><option value="root">root</option><option value="ready">READY</option><option value="ledger">발행기록</option><option value="child">READY 하위 폴더</option></select></label>
+
+<p class="note">하위 폴더를 선택할 때는 READY 안의 대상 폴더를 Google Picker에서 직접 선택하세요. 폴더를 열어 내부로 이동한 것만으로는 선택이 완료되지 않습니다. 선택된 폴더 ID와 토큰은 화면에 표시하거나 저장하지 않습니다.</p>
+<button id="pick" disabled>Google 계정 연결 후 폴더 선택</button>
+<button id="read" disabled>선택된 폴더·READY 패키지 읽기 검사</button>
+<button id="read-child" disabled>선택한 READY 하위 폴더 직접 조회</button>
+<button id="clear">이 탭의 토큰 지우기</button>
+<p id="result" role="status" aria-live="polite">Google 라이브러리를 불러오는 중입니다.</p>
+
+<script src="https://apis.google.com/js/api.js" async defer></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="./b02-standard-picker.js" defer></script></body></html>
